@@ -1,11 +1,20 @@
-from BusinessCard import BusinessCard
+from Contacts import BaseContact, BusinessContact
+from faker import Faker
 
-business_cards = []
+contacts = []
 
-for i in range(5):
-    card = BusinessCard.create_fake_card()
-    business_cards.append(card)
 
-for card in business_cards:
-    print(f"Name: {card.name}, Surname: {card.surname}, Company: {card.company}, "
-          f"Position: {card.position}, Email: {card.email}")
+def create_contacts(type='private', qty=1):
+    for i in range(qty):
+        fake = Faker(locale='pl_PL', providers=None)
+        name = fake.name().split()
+        email = fake.email()
+        phone = fake.phone_number()
+        if type == 'business':
+            company_name = fake.company()
+            company_phone = fake.phone_number()
+            position = fake.job()
+            contacts.append(BusinessContact(
+                name[0], name[1], email, phone, company_phone, company_name, position))
+    else:
+        contacts.append(BaseContact(name[0], name[1], phone, email))
