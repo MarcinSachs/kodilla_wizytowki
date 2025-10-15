@@ -14,10 +14,9 @@ class BaseContact:
         print(
             f"Wybieram numer {self.phone} i dzwonię do {self.name} {self.surname}")
 
-
-@property
-def label_length(self):
-    return len(self.name + " " + self.surname)
+    @property
+    def label_length(self):
+        return len(self.name + " " + self.surname)
 
 
 class BusinessContact(BaseContact):

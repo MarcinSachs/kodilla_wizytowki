@@ -1,4 +1,4 @@
-from Contacts import BaseContact, BusinessContact
+from contacts import BaseContact, BusinessContact
 from faker import Faker
 
 contacts = []
